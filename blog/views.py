@@ -1,7 +1,9 @@
 # blog/views.py
 
-from django.http import HttpResponse
-from django.shortcuts import render
 
-def my_blog(request):
-    return HttpResponse("Hello, Blog!")
+from django.shortcuts import render
+from django.views import generic
+from .models import Post
+
+class PostList(generic.ListView):
+    model = Post
