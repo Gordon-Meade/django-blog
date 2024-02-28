@@ -27,7 +27,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-_$zs%1$*vlg=bfa#z_c1-x1*%y#7izcko1h_v(r(p5e7!%&#8('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  
+DEBUG = True  
 
 ALLOWED_HOSTS = ['8000-gordonmeade-djangoblog-dijzlgpf95k.ws-eu108.gitpod.io','.herokuapp.com']
 
@@ -41,10 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_summernote',
     'blog',
     'about',
 ]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'codestar.urls'
@@ -114,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -125,6 +134,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
